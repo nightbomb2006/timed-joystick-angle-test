@@ -70,6 +70,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     SmartDashboard.putNumber("Joystick Angles", joystick.getDirectionDegrees());
+    SmartDashboard.putNumber("FrontLeft Motor Speed", leftFront.get());
+    SmartDashboard.putNumber("FrontRight Motor Speed", rightFront.get());
+    SmartDashboard.putNumber("RearLeft Motor Speed", leftRear.get());
+    SmartDashboard.putNumber("RearRight Motor Speed", rightRear.get());
 
   }
 
@@ -111,7 +115,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    drive.drivePolar(-joystick.getZ(), joystick.getDirectionDegrees(), 0);
+    drive.drivePolar(-joystick.getZ(), joystick.getDirectionDegrees(), joystick.getRawAxis(5));
   }
 
   /** This function is called once when the robot is disabled. */
